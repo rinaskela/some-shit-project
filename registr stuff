@@ -1,0 +1,28 @@
+# idk how all this works, but I suppose there is a folder with txts with login passwrd, and the other info
+# here i want to create method, which will create ~/members/id.txt
+
+number_of_members = File.read('~/number_of_members.txt')    # need to know how much members is exist
+number_of_members.to_i!    # to Integer
+
+method registr    # what its mean lol?
+  def initialize
+  end
+  
+  def reg_choice
+    puts "do u want to registr for having the oportunity to access all your graph ever made? <Space> for y, <any other key> 4 no"
+    @@choice = gets.chomp       # is that right syntax?
+    puts @@choice == " " ? "now i need more HDs(" : "now we will not save your history!"
+    @@flag = @@choice == " "
+  end
+  
+  def reg_itself(name, pin)
+    @name = name unless length(name) > 42
+    @pin = pin unless length(pin) > 42
+    victor = Proc.new { return "nonono" if length(name) > 42 || length(pin) > 42 }
+    victor.call # will not return to red_itself and txt will not be created, am i right?
+    
+    number_of_members += 1
+    File.open("~/members/#{number_of_members}.txt", w) {|i| i.write("#{name}\n#{pin}") }     # write to file name and pin
+    File.open("~/number_of_members.txt", w) {|i| i.write(number_of_members) }     # i hope it will create new file and delete old
+  end
+end
