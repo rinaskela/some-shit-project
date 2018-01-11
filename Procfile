@@ -1,1 +1,1 @@
-web: python AugurK.py
+worker: python AugurK2.py
